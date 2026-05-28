@@ -9,12 +9,6 @@
 #define FRAME_SIZE 256
 #define NUM_FRAMES 128
 
-extern TLB tlb[TLB_SIZE];
-extern int resultado_tlb;
-extern int tempo_global;
-extern int tlb_fifo_index;
-extern pthread_mutex_t mutex;
-
 
 typedef struct {
     int pagina;
@@ -27,6 +21,12 @@ typedef struct {
     int indice;
     int pagina;
 } argThread;
+
+extern TLB tlb[TLB_SIZE];
+extern int resultado_tlb;
+extern int tempo_global;
+extern int tlb_fifo_index;
+extern pthread_mutex_t mutex;
 
 void converter_endereco(int endereco);
 
