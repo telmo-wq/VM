@@ -35,7 +35,7 @@ extern int tempo_global;
 extern int tlb_fifo_index;
 extern pthread_mutex_t mutex;
 extern signed char memoria_fisica[NUM_FRAMES][FRAME_SIZE]; 
-extern int frame_usados;
+extern int frames_usados;
 extern int frame_fifo_index;
 extern int frame_timestamps[NUM_FRAMES];
 

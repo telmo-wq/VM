@@ -16,9 +16,23 @@ void atualizar_tlb(int frame, int pagina){
     if (algoritmo_tlb == 1){   //FIFO
         tlb[tlb_fifo_index].frame = frame;
         tlb[tlb_fifo_index].pagina = pagina;
+        tlb[tlb_fifo_index].valido = 1;
         tlb[tlb_fifo_index].timestamp = ++tempo_global;
         tlb_fifo_index = (tlb_fifo_index + 1) % TLB_SIZE;
         return;
               
+    }else {  //LRU
+        int indice_lru = 0;
+
+        for (int i = 0; i < TLB_SIZE; i++){
+            if (tlb[i].timestamp < tlb[indice_lru].timestamp){
+                indice_lru = i;
+            }
+        }
+
+        tlb[indice_lru].frame = frame;
+        tlb[indice_lru].pagina = pagina;
+        tlb[indice_lru].valido = 1;
+        tlb[indice_lru].timestamp = ++tempo_global;
     }
 }
