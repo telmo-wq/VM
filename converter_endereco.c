@@ -6,9 +6,14 @@ void converter_endereco(int endereco, FILE *log){
 
     int frame = buscar_tlb(pagina);
 
-    if (frame == -1){
-        //TLB Miss
-    }else {
+    if (frame == -1){   //TLB Miss
+        for (int i = 0; i < PAGE_TABLE_SIZE; i++){
+            if (tabelaPaginas[i].valido){
+                frame = tabelaPaginas[i].frame;
+                
+            }
+        }
+    }else {  //TLB hit
         int endereco_fisico = (frame * 256) + offset;
         signed char valor = memoria_fisica[frame][offset];
         fprintf(log, "Virtual address: %d Physical address: %d Value: %d\n", endereco, endereco_fisico, valor);

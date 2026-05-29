@@ -5,11 +5,6 @@
 #define FRAME_SIZE 256
 #define NUM_FRAMES 128
 
-TLB tlb[TLB_SIZE];
-int tlb_fifo_index = 0;
-int tempo_global = 0;
-int resultado_tlb = -1;
-
 int buscar_tlb(int pagina){
     resultado_tlb = -1;
     pthread_t threads[TLB_SIZE];

@@ -1,6 +1,6 @@
 #include "biblioteca.h"
 
-pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
+
 
 void *thread_func(void *arg){
     argThread *a = (argThread *)arg;
